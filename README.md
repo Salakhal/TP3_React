@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+# 📘 TP 3 : Navigation, rendu conditionnel et intégration des ressources avec React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Projet : DevFlow Workspace**
 
-## Available Scripts
+🎯 Objectif du TP
+Ce TP a pour objectif de mettre en pratique les concepts fondamentaux de React à travers la création d'un tableau de bord professionnel (Dashboard) :
+* 🔁 Le rendu conditionnel avec `useState`
+* 🔄 L’itération des données avec `map()`
+* 🌐 La navigation entre pages avec `React Router` et `useNavigate`
+* 🖼️ L’intégration des images dynamiques et médias (audio)
+* 🎨 L’application de styles CSS modernes (Grid, Flexbox, Variables)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Lancement du projet
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**1. Création du projet**
+```bash
+npx create-react-app devflow-workspace
+cd devflow-workspace
+npm start
+```
+ ## 2. Installation de React Router
+ ```
+npm install react-router-dom
+```
+## 📂 Structure du projet
+Pour une meilleure maintenabilité, nous avons adopté une architecture modulaire où les sous-composants de la page d'accueil sont regroupés intelligemment :
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🧭 Navigation (React Router)
 
-### `npm run build`
+* Utilisation de `BrowserRouter` dans `index.js`.
+* Définition des routes principales avec `<Routes>` et `<Route>` dans `App.js`.
+* Navigation du menu avec `<NavLink>` (gère automatiquement la classe `active`).
+* **Bonus technique :** Redirection programmatique avec le Hook `useNavigate()` pour le bouton "Voir mes rapports".
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Pages créées :**
+* 🏠 Tableau de bord (Accueil)
+* ℹ️ Nos Projets (À propos)
+* 📞 Support Client (Contact)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🔁 Rendu conditionnel
 
-### `npm run eject`
+Le composant `EspaceUtilisateur` (dans `Accueil.js`) permet de gérer la session de travail de l'utilisateur :
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+const [estConnecte, setEstConnecte] = useState(false);
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Affichage conditionnel et dynamique :**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Changement du badge : `{estConnecte ? '🟢 En Ligne' : '🔴 Hors Ligne'}`
+* Changement de la couleur du texte et du message d'état en temps réel.
+* Changement du texte du bouton dynamiquement.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📋 Listes dynamiques avec map()
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Composant `SectionListes` (dans `Accueil.js`) :**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **Tâches prioritaires :** Affichage dynamique d’un tableau (`Array`) de tâches de développement.
+* **Ressources utiles :** Itération sur un tableau de liens (Github, Figma, Docs) via la méthode `.map()`.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🔔 Alertes et Notifications
 
-### Analyzing the Bundle Size
+Une carte dédiée alerte l'utilisateur du nombre de messages en attente. Le texte met en valeur le chiffre de manière dynamique.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🖼️ Intégration des médias
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* **Images externes :** Intégration du logo React au format SVG.
+* **Lecteur Audio :** Intégration d'un message vocal ("Message du Chef de Projet") avec `<audio controls />`.
+* **Galerie d’images :** Une grille (`gallery-grid`) affichant trois images de code illustratives depuis la banque d'images Unsplash, stylisées avec `object-fit: cover`.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🎨 Style CSS
 
-### Deployment
+Utilisation d'un fichier `App.css` global et moderne :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* Design en cartes (`.card`) avec fond blanc et ombres douces (`box-shadow`).
+* Variables CSS (`:root`) pour maintenir la cohérence des couleurs (ex: `--primary-blue`).
+* Mise en page `CSS Grid` pour les statistiques et la galerie d'images.
+* Mise en page `Flexbox` pour l'en-tête et les alignements internes des cartes.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🧪 Fonctionnalités réalisées
+
+* ✔ Navigation fluide en mode SPA (Single Page Application).
+* ✔ Gestion d’état complexe avec `useState`.
+* ✔ Routage par bouton avec `useNavigate()`.
+* ✔ Génération de listes dynamiques via `.map()`.
+* ✔ Interface utilisateur professionnelle type "SaaS" / "Dashboard".
+
+---
+
+## 🧠 Conclusion
+
+Ce TP m'a permis de maîtriser l'assemblage de composants React pour créer une interface utilisateur complète, fluide et professionnelle. J'ai pu comprendre l'importance d'une bonne gestion des états pour rendre l'interface réactive, ainsi que la puissance du routage côté client pour une expérience utilisateur optimale.
+
+
+## 🎥 Démo du Projet
+
+Voici une vidéo de démonstration de notre application en cours de fonctionnement :
+
+
+
+
+
+
+## 👤 Auteur
+
+* **École Normale Supérieure de Marrakech**
+  
+* **Réalisé par :** SALMA LAKHAL
+  
+* **Filière  :** CLE_INFO_S5
+
+  
+* **Encadré par :** Pr. Mohamed LACHGAR
+
+* **Module :** `Développement Front-End moderne avec React`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
