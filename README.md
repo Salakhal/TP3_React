@@ -25,7 +25,26 @@ npm start
 npm install react-router-dom
 ```
 ## 📂 Structure du projet
-Pour une meilleure maintenabilité, nous avons adopté une architecture modulaire où les sous-composants de la page d'accueil sont regroupés intelligemment :
+
+Voici l'arborescence détaillée de notre code source (dossier `src`) selon la configuration de notre projet :
+
+```text
+src/
+├── Accueil.js           # Composant principal (Tableau de bord)
+├── App.css              # Feuille de style globale
+├── App.js               # Composant racine et configuration du routage
+├── App.test.js          # Fichiers de tests
+├── Apropos.js           # Composant de la page "À propos"
+├── Connexion.js         # Composant gérant l'état de connexion utilisateur
+├── Contact.js           # Composant de la page "Contact"
+├── index.css            # Styles de base
+├── index.js             # Point d'entrée de l'application React
+├── LecteurAudio.js      # Composant personnalisé pour le lecteur audio
+├── ListeTaches.js       # Composant gérant l'affichage des listes (map)
+├── Logo.js              # Composant affichant le logo
+├── logo.svg             # Image vectorielle du logo
+├── reportWebVitals.js   # Fichier de mesure des performances
+└── setupTests.js        # Configuration pour les tests
 
 
 
