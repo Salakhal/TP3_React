@@ -46,7 +46,7 @@ src/
 ├── reportWebVitals.js   # Fichier de mesure des performances
 └── setupTests.js        # Configuration pour les tests
 
-
+```
 
 ## 🧭 Navigation (React Router)
 
